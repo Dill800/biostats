@@ -31,6 +31,12 @@ Tokens.findOne({type: 'access'}, (err, token) => {
     }
   }
   
+  let today = new Date();
+  // include below line if dealing with yesterday
+  //today.setDate(today.getDate() - 1)
+  var todayFormatted = today.getFullYear()+'-'+(String)(today.getMonth()+1).padStart(2, '0') +'-'+(String)(today.getDate()).padStart(2, '0');
+
+  // Returns heartrate in BPM
   app.get('/heartrate', (req, res) => {
       axios.get('https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json',header_token)
       .then(response => {
@@ -40,20 +46,21 @@ Tokens.findOne({type: 'access'}, (err, token) => {
       .catch(e => res.send(e))
   })
   
+  // Returns sleep in hours
   app.get('/sleep', (req, res) => {
-    let today = new Date();
-    // include below line if dealing with yesterday
-    today.setDate(today.getDate() - 1)
-    var date = today.getFullYear()+'-'+(String)(today.getMonth()+1).padStart(2, '0') +'-'+(String)(today.getDate()).padStart(2, '0');
-    axios.get(`https://api.fitbit.com/1.2/user/-/sleep/date/${date}.json`, header_token)
+    
+    axios.get(`https://api.fitbit.com/1.2/user/-/sleep/date/${todayFormatted}.json`, header_token)
     .then(response => {
-      res.send({success: true, totalMinutesAsleep: response.data.summary.totalMinutesAsleep})
+      let minsAsleep = response.data.summary.totalMinutesAsleep;
+      let timeSlept = Math.round(minsAsleep * 100.0 / 60)/100;
+      res.send({success: true, totalMinutesAsleep: timeSlept})
     })
     .catch(e => {res.send(e)})
   })
   
+  // Returns steps for the day
   app.get('/steps', (req, res) => {
-    axios.get(`https://api.fitbit.com/1/user/-/activities/date/2020-04-01.json`, header_token)
+    axios.get(`https://api.fitbit.com/1/user/-/activities/date/${todayFormatted}.json`, header_token)
     .then(response => {
       res.send({success: true, steps: response.data.summary.steps})
     })
