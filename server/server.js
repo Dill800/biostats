@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const axios = require('axios')
-const config = require('./config')
 const qs = require('qs')
 const mongoose = require('mongoose')
 const Tokens = require('./db/tokenSchema.js')
@@ -13,7 +12,7 @@ var app = express();
 
 app.use(cors())
 
-mongoose.connect(config.dburi, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+mongoose.connect(process.env.MONGODB_URI || require('./config').dburi, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log("Database Connection Successful!")
 })
 
@@ -66,7 +65,7 @@ app.use('/*', (req, res, next) => {
         {
           headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            'Authorization': `Basic ${config.base64authkey}`
+            'Authorization': `Basic ${process.env.AUTH_KEY || require('./config').base64authkey}`
           }
         })
         .then(response => {
