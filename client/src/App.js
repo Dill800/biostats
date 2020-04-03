@@ -14,21 +14,21 @@ function App() {
     .then(response => {
       setHeartRate(response.data.heartrate.value);
     })
-  }, [heartRate])
+  }, [])
 
   useEffect(() => {
     axios.get('/sleep')
     .then(response => {
       setSleepTime(response.data.totalMinutesAsleep);
     })
-  }, [sleepTime])
+  }, [])
 
   useEffect(() => {
     axios.get('/steps')
     .then(response => {
       setSteps(response.data.steps);
     })
-  }, [steps])
+  }, [])
 
   return (
     <div className="App">

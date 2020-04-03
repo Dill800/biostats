@@ -108,7 +108,6 @@ app.use('/*', (req, res, next) => {
 
     }
 
-    //return;
   })
 
 })
@@ -155,5 +154,17 @@ Tokens.findOne({type: 'access'}, (err, token) => {
       "Authorization": `Bearer ${token.value}`
     }
   }
+
   app.listen(port, () => console.log(`Server now running on port ${port}!`));
 })
+
+// deployment stuff
+//if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+//}
