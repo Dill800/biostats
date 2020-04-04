@@ -34,9 +34,9 @@ function App() {
     <div className="App">
       
       <h1>This is a fitbit backend test</h1>
-      <p>Heartrate: {heartRate}</p>
+      <p>Heartrate: {heartRate} BPM</p>
       <p>Steps Taken: {steps}</p>
-      <p>Time Slept: {sleepTime}</p>
+      <p>Time Slept: {sleepTime} hrs</p>
 
 
     </div>
