@@ -20,12 +20,9 @@ mongoose.connect(process.env.MONGODB_URI || require('./config').dburi, {useNewUr
 // Will get updated before server starts
 let auth_header = null;
 
-let today = new Date();
-let todayFormatted = today.getFullYear()+'-'+(String)(today.getMonth()+1).padStart(2, '0') +'-'+(String)(today.getDate()).padStart(2, '0');
-
 // Returns steps for the day
 app.get('/steps', (req, res) => {
-  axios.get(`https://api.fitbit.com/1/user/-/activities/date/${todayFormatted}.json`, auth_header)
+  axios.get(`https://api.fitbit.com/1/user/-/activities/date/today.json`, auth_header)
   .then(response => {
 
     res.send({success: true, steps: response.data.summary.steps})
@@ -47,7 +44,7 @@ app.get('/heartrate', (req, res) => {
 // Returns sleep in hours
 app.get('/sleep', (req, res) => {
   
-  axios.get(`https://api.fitbit.com/1.2/user/-/sleep/date/${todayFormatted}.json`, auth_header)
+  axios.get(`https://api.fitbit.com/1.2/user/-/sleep/date/today.json`, auth_header)
   .then(response => {
 
     let minsAsleep = response.data.summary.totalMinutesAsleep;
