@@ -1,0 +1,10 @@
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:27.414Z","msg":"Using New Relic for Node.js. Agent version: 6.5.0; Node version: v13.7.0."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:27.562Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:27.671Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:27.671Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:29.812Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:29.812Z","msg":"Connected to collector-003.newrelic.com:443 with agent run ID BbYwn0rleKvLACjdAR3BjgZeh_cEAAgBAAAnIQEAASdsAgQdwY4CAwAFNi41LjAAD0xBUFRPUC0wSlFSOVZSUgAPRGlsbG9uIEJpb3N0YXRz.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:29.812Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2678017/applications/499224066","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:29.813Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:29.815Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"LAPTOP-0JQR9VRR","pid":75628,"time":"2020-04-04T02:53:30.815Z","msg":"Starting initial 1000ms harvest."}
